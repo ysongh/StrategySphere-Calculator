@@ -21,6 +21,11 @@ export default function HomeScreen() {
     }
   };
 
+  const resetPoints = () => {
+    setPoints1(20);
+    setPoints2(20);
+  };
+
   return (
     <View style={styles.container}>
       <Text style={styles.pointsText}>Player 1: {points1}</Text>
@@ -56,6 +61,17 @@ export default function HomeScreen() {
           <Text style={styles.buttonText}>+ 1</Text>
         </TouchableOpacity>
       </View>
+
+      <View style={styles.space} ></View>
+      <View style={styles.space} ></View>
+      <View style={styles.space} ></View>
+
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={resetPoints}
+      >
+        <Text style={styles.buttonText}>Reset</Text>
+      </TouchableOpacity>
     </View>
   );
 }
