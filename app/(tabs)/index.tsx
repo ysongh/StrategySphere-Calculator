@@ -2,29 +2,56 @@ import React, { useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 export default function HomeScreen() {
-  const [points, setPoints] = useState(20);
+  const [points1, setPoints1] = useState(20);
+  const [points2, setPoints2] = useState(20);
 
-  const incrementPoints = () => {
-    setPoints(prevPoints => prevPoints + 1);
+  const incrementPoints = (player: number) => {
+    if (player === 1){
+      setPoints1(prevPoints => prevPoints + 1);
+    } else {
+      setPoints2(prevPoints => prevPoints + 1);
+    }
   };
 
-  const decrementPoints = () => {
-    setPoints(prevPoints => prevPoints - 1);
+  const decrementPoints = (player: number) => {
+    if (player === 1){
+      setPoints1(prevPoints => prevPoints - 1);
+    } else {
+      setPoints2(prevPoints => prevPoints - 1);
+    }
   };
 
   return (
     <View style={styles.container}>
-      <Text style={styles.pointsText}>Points: {points}</Text>
+      <Text style={styles.pointsText}>Player 1: {points1}</Text>
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
           style={styles.button} 
-          onPress={decrementPoints}
+          onPress={() => decrementPoints(1)}
         >
           <Text style={styles.buttonText}>- 1</Text>
         </TouchableOpacity>
         <TouchableOpacity 
           style={styles.button} 
-          onPress={incrementPoints}
+          onPress={() => incrementPoints(1)}
+        >
+          <Text style={styles.buttonText}>+ 1</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.space} ></View>
+
+      <Text style={styles.pointsText}>Player 2: {points2}</Text>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => decrementPoints(2)}
+        >
+          <Text style={styles.buttonText}>- 1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => incrementPoints(2)}
         >
           <Text style={styles.buttonText}>+ 1</Text>
         </TouchableOpacity>
@@ -62,4 +89,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: 'bold'
   },
+  space: {
+    marginVertical: 20,
+  }
 });
