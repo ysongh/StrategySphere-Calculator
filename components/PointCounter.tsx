@@ -6,29 +6,58 @@ import { ThemedView } from '@/components/ThemedView';
 export function PointCounter({ points, decrementPoints, incrementPoints, id }: PropsWithChildren & { points: number, decrementPoints: Function, incrementPoints: Function, id: string }) {
   return (
     <ThemedView>
-      <Text style={styles.pointsText}>Player {id}: {points}</Text>
-        <View style={styles.buttonContainer}>
-          <TouchableOpacity 
-            style={styles.button} 
-            onPress={() => decrementPoints(id)}
-          >
-            <Text style={styles.buttonText}>- 1</Text>
-          </TouchableOpacity>
-          <TouchableOpacity 
-            style={styles.button} 
-            onPress={() => incrementPoints(id)}
-          >
-            <Text style={styles.buttonText}>+ 1</Text>
-          </TouchableOpacity>
+      <View style={styles.titleContainer}>
+        <Text style={styles.titleText}>Player: {id}</Text>
+        <View style={styles.pointsContainer}>
+          <Text style={styles.pointsText}>{points}</Text>
         </View>
+      </View>
+      <View style={styles.buttonContainer}>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => decrementPoints(id)}
+        >
+          <Text style={styles.buttonText}>- 1</Text>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => incrementPoints(id)}
+        >
+          <Text style={styles.buttonText}>+ 1</Text>
+        </TouchableOpacity>
+      </View>
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
-  pointsText: {
+  titleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
+  },
+  pointsContainer: {
+    backgroundColor: '#FFD700',
+    borderRadius: 15,
+    padding: 10,
+    marginLeft: 10,
+    marginVertical: 20,
+    minWidth: 100,
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  titleText: {
     fontSize: 24,
-    marginBottom: 20,
+    fontWeight: 'bold'
+  },
+  pointsText: {
+    fontSize: 50,
     fontWeight: 'bold'
   },
   buttonContainer: {
