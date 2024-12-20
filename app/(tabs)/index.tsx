@@ -23,6 +23,11 @@ export default function HomeScreen() {
     }
   };
 
+  const decrementAllPoints = () => {
+    setPoints1(prevPoints => prevPoints - 1);
+    setPoints2(prevPoints => prevPoints - 1);
+  };
+
   const resetPoints = () => {
     setPoints1(20);
     setPoints2(20);
@@ -47,6 +52,14 @@ export default function HomeScreen() {
 
       <View style={styles.space} ></View>
       <View style={styles.space} ></View>
+
+      <TouchableOpacity 
+        style={styles.button} 
+        onPress={decrementAllPoints}
+      >
+        <Text style={styles.buttonText}>-1 All</Text>
+      </TouchableOpacity>
+
       <View style={styles.space} ></View>
 
       <TouchableOpacity 
