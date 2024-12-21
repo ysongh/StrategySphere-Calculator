@@ -1,17 +1,64 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Audio } from 'expo-av';
 
 import { PointCounter } from '@/components/PointCounter';
 
 export default function HomeScreen() {
   const [points1, setPoints1] = useState(20);
   const [points2, setPoints2] = useState(20);
+  const [incrementSound, setIncrementSound] = useState();
+  const [decrementSound, setDecrementSound] = useState();
 
-  const incrementPoints = (player: string) => {
+  useEffect(() => {
+    // Load sound effects
+    async function loadSounds() {
+      try {
+        // Make sure audio is allowed to play
+        await Audio.setAudioModeAsync({
+          playsInSilentModeIOS: true,
+          allowsRecordingIOS: false,
+          staysActiveInBackground: false,
+          shouldDuckAndroid: true,
+        });
+
+        // Load increment sound
+        const { sound: incrementSoundObject } = await Audio.Sound.createAsync(
+          require('../../assets/sounds/add.mp3'),
+        );
+        setIncrementSound(incrementSoundObject);
+
+        // Load decrement sound
+        const { sound: decrementSoundObject } = await Audio.Sound.createAsync(
+          require('../../assets/sounds/lose.mp3'),
+        );
+        setDecrementSound(decrementSoundObject);
+      } catch (error) {
+        console.log('Error loading sounds:', error);
+      }
+    }
+
+    loadSounds();
+
+    // Cleanup function to unload sounds when component unmounts
+    return () => {
+      if (incrementSound) {
+        incrementSound.unloadAsync();
+      }
+      if (decrementSound) {
+        decrementSound.unloadAsync();
+      }
+    };
+  }, []);
+
+  const incrementPoints = async(player: string) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints + 1);
     } else {
       setPoints2(prevPoints => prevPoints + 1);
+    }
+    if (incrementSound) {
+      await incrementSound.replayAsync();
     }
   };
 
