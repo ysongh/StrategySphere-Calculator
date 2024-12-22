@@ -62,17 +62,24 @@ export default function HomeScreen() {
     }
   };
 
-  const decrementPoints = (player: string) => {
+  const decrementPoints = async (player: string) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints - 1);
     } else {
       setPoints2(prevPoints => prevPoints - 1);
     }
+    if (decrementSound) {
+      await decrementSound.replayAsync();
+    }
   };
 
-  const decrementAllPoints = () => {
+  const decrementAllPoints = async () => {
     setPoints1(prevPoints => prevPoints - 1);
     setPoints2(prevPoints => prevPoints - 1);
+
+    if (decrementSound) {
+      await decrementSound.replayAsync();
+    }
   };
 
   const resetPoints = () => {
