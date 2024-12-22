@@ -24,13 +24,13 @@ export default function HomeScreen() {
 
         // Load increment sound
         const { sound: incrementSoundObject } = await Audio.Sound.createAsync(
-          require('../../assets/sounds/add.mp3'),
+          require('../../assets/sounds/add.wav'),
         );
         setIncrementSound(incrementSoundObject);
 
         // Load decrement sound
         const { sound: decrementSoundObject } = await Audio.Sound.createAsync(
-          require('../../assets/sounds/lose.mp3'),
+          require('../../assets/sounds/lose.wav'),
         );
         setDecrementSound(decrementSoundObject);
       } catch (error) {
