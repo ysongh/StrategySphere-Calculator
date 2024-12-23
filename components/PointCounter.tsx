@@ -14,13 +14,13 @@ export function PointCounter({ points, decrementPoints, incrementPoints, id }: P
       </View>
       <View style={styles.buttonContainer}>
         <TouchableOpacity 
-          style={styles.button} 
+          style={styles.buttonDecrement} 
           onPress={() => decrementPoints(id)}
         >
           <Text style={styles.buttonText}>- 1</Text>
         </TouchableOpacity>
         <TouchableOpacity 
-          style={styles.button} 
+          style={styles.buttonIncrement} 
           onPress={() => incrementPoints(id)}
         >
           <Text style={styles.buttonText}>+ 1</Text>
@@ -65,8 +65,15 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     width: 200
   },
-  button: {
-    backgroundColor: '#007bff',
+  buttonIncrement: {
+    backgroundColor: '#30e3ca',
+    padding: 10,
+    borderRadius: 5,
+    width: 80,
+    alignItems: 'center'
+  },
+  buttonDecrement: {
+    backgroundColor: '#ff304f',
     padding: 10,
     borderRadius: 5,
     width: 80,

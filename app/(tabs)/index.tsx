@@ -108,7 +108,7 @@ export default function HomeScreen() {
       <View style={styles.space} ></View>
 
       <TouchableOpacity 
-        style={styles.button} 
+        style={styles.buttonDecrement} 
         onPress={decrementAllPoints}
       >
         <Text style={styles.buttonText}>-1 All</Text>
@@ -135,6 +135,13 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#007bff',
+    padding: 10,
+    borderRadius: 5,
+    width: 80,
+    alignItems: 'center'
+  },
+  buttonDecrement: {
+    backgroundColor: '#ff304f',
     padding: 10,
     borderRadius: 5,
     width: 80,
