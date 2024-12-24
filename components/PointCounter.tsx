@@ -3,7 +3,14 @@ import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { ThemedView } from '@/components/ThemedView';
 
-export function PointCounter({ points, decrementPoints, incrementPoints, id }: PropsWithChildren & { points: number, decrementPoints: Function, incrementPoints: Function, id: string }) {
+type pointData = {
+  points: number,
+  decrementPoints: Function,
+  incrementPoints: Function,
+  id: string,
+};
+
+export function PointCounter({ points, decrementPoints, incrementPoints, id }: PropsWithChildren & pointData) {
   return (
     <ThemedView>
       <View style={styles.titleContainer}>
