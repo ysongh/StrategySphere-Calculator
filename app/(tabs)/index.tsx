@@ -105,7 +105,6 @@ export default function HomeScreen() {
       />
 
       <View style={styles.space} ></View>
-      <View style={styles.space} ></View>
 
       <TouchableOpacity 
         style={styles.buttonDecrement} 
