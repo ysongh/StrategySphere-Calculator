@@ -13,7 +13,7 @@ type pointData = {
 export function PointCounter({ points, decrementPoints, incrementPoints, id }: PropsWithChildren & pointData) {
   return (
     <ThemedView>
-      <View style={styles.titleContainer}>
+      <View style={id === "2" ? styles.titleContainer : styles.upsideTitleContainer}>
         <Text style={styles.titleText}>Player: {id}</Text>
         <View style={styles.pointsContainer}>
           <Text style={styles.pointsText}>{points}</Text>
@@ -40,7 +40,12 @@ export function PointCounter({ points, decrementPoints, incrementPoints, id }: P
 const styles = StyleSheet.create({
   titleContainer: {
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+  },
+  upsideTitleContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    transform: [{ rotate: '180deg' }],
   },
   pointsContainer: {
     backgroundColor: '#FFD700',
