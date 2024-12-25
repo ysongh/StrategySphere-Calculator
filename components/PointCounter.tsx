@@ -16,7 +16,11 @@ export function PointCounter({ points, decrementPoints, incrementPoints, id }: P
       <View style={id === "2" ? styles.titleContainer : styles.upsideTitleContainer}>
         <Text style={styles.titleText}>Player: {id}</Text>
         <View style={styles.pointsContainer}>
-          <Text style={styles.pointsText}>{points}</Text>
+          <Text style={{
+            fontSize: 50,
+            fontWeight: 'bold',
+            color: points >= 20 ? 'black' : 'red',
+          }}>{points}</Text>
         </View>
       </View>
       <View style={styles.buttonContainer}>
@@ -66,10 +70,6 @@ const styles = StyleSheet.create({
   },
   titleText: {
     fontSize: 24,
-    fontWeight: 'bold'
-  },
-  pointsText: {
-    fontSize: 50,
     fontWeight: 'bold'
   },
   buttonContainer: {
