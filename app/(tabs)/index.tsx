@@ -9,6 +9,7 @@ export default function HomeScreen() {
   const [points2, setPoints2] = useState(20);
   const [incrementSound, setIncrementSound] = useState();
   const [decrementSound, setDecrementSound] = useState();
+  const [newGameSound, setNewGameSound] = useState();
 
   useEffect(() => {
     // Load sound effects
@@ -33,6 +34,12 @@ export default function HomeScreen() {
           require('../../assets/sounds/lose.wav'),
         );
         setDecrementSound(decrementSoundObject);
+
+        // Load decrement sound
+        const { sound: newGameSoundObject } = await Audio.Sound.createAsync(
+          require('../../assets/sounds/newgame.wav'),
+        );
+        setNewGameSound(newGameSoundObject);
       } catch (error) {
         console.log('Error loading sounds:', error);
       }
@@ -82,9 +89,13 @@ export default function HomeScreen() {
     }
   };
 
-  const resetPoints = () => {
+  const resetPoints = async () => {
     setPoints1(20);
     setPoints2(20);
+
+    if (newGameSound) {
+      await newGameSound.replayAsync();
+    }
   };
 
   return (
