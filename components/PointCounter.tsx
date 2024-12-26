@@ -14,7 +14,7 @@ export function PointCounter({ points, decrementPoints, incrementPoints, id }: P
   return (
     <ThemedView>
       <View style={id === "2" ? styles.titleContainer : styles.upsideTitleContainer}>
-        <Text style={styles.titleText}>Player: {id}</Text>
+        <Text style={styles.titleText}>P{id}</Text>
         <View style={styles.pointsContainer}>
           <Text style={{
             fontSize: 50,
@@ -69,8 +69,9 @@ const styles = StyleSheet.create({
     elevation: 5,
   },
   titleText: {
-    fontSize: 24,
-    fontWeight: 'bold'
+    fontSize: 30,
+    fontWeight: 'bold',
+    marginRight: 5,
   },
   buttonContainer: {
     flexDirection: 'row',
