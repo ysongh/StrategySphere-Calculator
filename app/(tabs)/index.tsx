@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, Button, StyleSheet } from 'react-native';
 import { Audio } from 'expo-av';
 
 import { PointCounter } from '@/components/PointCounter';
+import Popup from '@/components/Popup';
 
 export default function HomeScreen() {
   const [points1, setPoints1] = useState(20);
@@ -10,6 +11,7 @@ export default function HomeScreen() {
   const [incrementSound, setIncrementSound] = useState();
   const [decrementSound, setDecrementSound] = useState();
   const [newGameSound, setNewGameSound] = useState();
+  const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
 
   useEffect(() => {
     // Load sound effects
@@ -117,6 +119,11 @@ export default function HomeScreen() {
 
       <View style={styles.space} ></View>
 
+      <Button 
+        title="Show Popup" 
+        onPress={() => setIsPopupVisible(true)} 
+      />
+
       <TouchableOpacity 
         style={styles.buttonDecrement} 
         onPress={decrementAllPoints}
@@ -132,6 +139,15 @@ export default function HomeScreen() {
       >
         <Text style={styles.buttonText}>Reset</Text>
       </TouchableOpacity>
+      
+      <Popup
+        visible={isPopupVisible}
+        title="Welcome!"
+        message="This is a custom popup message."
+        onClose={() => setIsPopupVisible(false)}
+        closeButtonText="Got it!"
+        closeButtonColor="#007AFF"
+      />
     </View>
   );
 }
