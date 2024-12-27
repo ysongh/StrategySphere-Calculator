@@ -82,6 +82,18 @@ export default function HomeScreen() {
     }
   };
 
+  const decrementXPoints = async (player: string, amount: number) => {
+    if (player === "1"){
+      setPoints1(prevPoints => prevPoints - amount);
+    } else {
+      setPoints2(prevPoints => prevPoints - amount);
+    }
+    setIsPopupVisible(false);
+    if (decrementSound) {
+      await decrementSound.replayAsync();
+    }
+  };
+
   const decrementAllPoints = async () => {
     setPoints1(prevPoints => prevPoints - 1);
     setPoints2(prevPoints => prevPoints - 1);
@@ -147,6 +159,7 @@ export default function HomeScreen() {
         onClose={() => setIsPopupVisible(false)}
         closeButtonText="Got it!"
         closeButtonColor="#007AFF"
+        decrementXPoints={decrementXPoints}
       />
     </View>
   );

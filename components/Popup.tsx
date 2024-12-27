@@ -9,6 +9,7 @@ interface PopupProps {
   animationType?: ModalProps['animationType'];
   closeButtonText?: string;
   closeButtonColor?: string;
+  decrementXPoints: Function;
 }
 
 const Popup: React.FC<PopupProps> = ({
@@ -18,7 +19,8 @@ const Popup: React.FC<PopupProps> = ({
   onClose,
   animationType = 'fade',
   closeButtonText = 'Close',
-  closeButtonColor = '#2196F3'
+  closeButtonColor = '#2196F3',
+  decrementXPoints
 }) => {
   return (
     <Modal
@@ -31,6 +33,12 @@ const Popup: React.FC<PopupProps> = ({
         <View style={styles.modalView}>
           <Text style={styles.modalTitle}>{title}</Text>
           <Text style={styles.modalText}>{message}</Text>
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: closeButtonColor }]}
+            onPress={() => decrementXPoints("1", 5)}
+          >
+            <Text style={styles.buttonText}>-5</Text>
+          </TouchableOpacity>
           <TouchableOpacity
             style={[styles.button, { backgroundColor: closeButtonColor }]}
             onPress={onClose}
