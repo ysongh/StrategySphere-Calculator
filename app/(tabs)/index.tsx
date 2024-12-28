@@ -71,6 +71,17 @@ export default function HomeScreen() {
     }
   };
 
+  const incrementXPoints =async (player: string, amount: number) => {
+    if (player === "1"){
+      setPoints1(prevPoints => prevPoints + amount);
+    } else {
+      setPoints2(prevPoints => prevPoints + amount);
+    }
+    if (incrementSound) {
+      await incrementSound.replayAsync();
+    }
+  };
+
   const decrementPoints = async (player: string) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints - 1);
@@ -164,6 +175,7 @@ export default function HomeScreen() {
         closeButtonText="Got it!"
         closeButtonColor="#007AFF"
         decrementXPoints={decrementXPoints}
+        incrementXPoints={incrementXPoints}
       />
     </View>
   );
