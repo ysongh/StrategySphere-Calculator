@@ -114,12 +114,21 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
-      <PointCounter
-        points={points1}
-        decrementPoints={decrementPoints}
-        incrementPoints={incrementPoints}
-        id={"1"}
-      />
+      <View style={styles.pointContainer}>
+        <PointCounter
+          points={points1}
+          decrementPoints={decrementPoints}
+          incrementPoints={incrementPoints}
+          id={"1"}
+        />
+        <TouchableOpacity 
+          style={styles.buttonPopup} 
+          onPress={() => setIsPopupVisible(true)} 
+        >
+          <Text style={styles.buttonPopupText}>More</Text>
+        </TouchableOpacity>
+      </View>
+
       <View style={styles.space} ></View>
 
       <PointCounter
@@ -130,11 +139,6 @@ export default function HomeScreen() {
       />
 
       <View style={styles.space} ></View>
-
-      <Button 
-        title="Show Popup" 
-        onPress={() => setIsPopupVisible(true)} 
-      />
 
       <TouchableOpacity 
         style={styles.buttonDecrement} 
@@ -172,6 +176,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#f5f5f5'
   },
+  pointContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   button: {
     backgroundColor: '#007bff',
     padding: 10,
@@ -189,6 +198,20 @@ const styles = StyleSheet.create({
   buttonText: {
     color: 'white',
     fontSize: 18,
+    fontWeight: 'bold',
+    marginVertical: 8
+  },
+  buttonPopup: {
+    backgroundColor: 'orange',
+    padding: 10,
+    borderRadius: 5,
+    marginLeft: 30,
+    width: 80,
+    alignItems: 'center'
+  },
+  buttonPopupText: {
+    color: 'white',
+    fontSize: 15,
     fontWeight: 'bold',
     marginVertical: 8
   },
