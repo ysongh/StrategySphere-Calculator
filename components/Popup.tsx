@@ -35,18 +35,37 @@ const Popup: React.FC<PopupProps> = ({
         <View style={styles.modalView}>
           <Text style={styles.modalTitle}>{title}</Text>
           <Text style={styles.modalText}>{message}</Text>
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: closeButtonColor }]}
-            onPress={() => decrementXPoints("1", 5)}
-          >
-            <Text style={styles.buttonText}>-5</Text>
-          </TouchableOpacity>
-          <TouchableOpacity
-            style={[styles.button, { backgroundColor: closeButtonColor }]}
-            onPress={() => incrementXPoints("1", 5)}
-          >
-            <Text style={styles.buttonText}>+5</Text>
-          </TouchableOpacity>
+          <View style={styles.buttonContainer}>
+            <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("1", 5)}
+              >
+                <Text style={styles.buttonText}>-5</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("2", 5)}
+              >
+                <Text style={styles.buttonText}>-5</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => incrementXPoints("1", 5)}
+              >
+                <Text style={styles.buttonText}>+5</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => incrementXPoints("2", 5)}
+              >
+                <Text style={styles.buttonText}>+5</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+          
           <TouchableOpacity
             style={[styles.button, { backgroundColor: closeButtonColor }]}
             onPress={onClose}
@@ -100,6 +119,16 @@ const styles = StyleSheet.create({
     color: 'white',
     fontWeight: 'bold',
     textAlign: 'center',
+  },
+  buttonContainer: {
+    width: '100%',
+    gap: 10,
+    marginBottom: 10,
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    gap: 8,
   },
 });
 

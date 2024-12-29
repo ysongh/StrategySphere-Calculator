@@ -71,12 +71,13 @@ export default function HomeScreen() {
     }
   };
 
-  const incrementXPoints =async (player: string, amount: number) => {
+  const incrementXPoints = async (player: string, amount: number) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints + amount);
     } else {
       setPoints2(prevPoints => prevPoints + amount);
     }
+    setIsPopupVisible(false);
     if (incrementSound) {
       await incrementSound.replayAsync();
     }
