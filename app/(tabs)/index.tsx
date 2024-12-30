@@ -171,7 +171,6 @@ export default function HomeScreen() {
       <Popup
         visible={isPopupVisible}
         title="Welcome!"
-        message="This is a custom popup message."
         onClose={() => setIsPopupVisible(false)}
         closeButtonColor="#007AFF"
         decrementXPoints={decrementXPoints}

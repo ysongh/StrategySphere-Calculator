@@ -4,7 +4,6 @@ import { Modal, View, Text, TouchableOpacity, StyleSheet, ModalProps } from 'rea
 interface PopupProps {
   visible: boolean;
   title: string;
-  message: string;
   onClose: () => void;
   animationType?: ModalProps['animationType'];
   closeButtonColor?: string;
@@ -15,7 +14,6 @@ interface PopupProps {
 const Popup: React.FC<PopupProps> = ({
   visible,
   title,
-  message,
   onClose,
   animationType = 'fade',
   closeButtonColor = '#2196F3',
@@ -32,7 +30,6 @@ const Popup: React.FC<PopupProps> = ({
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalTitle}>{title}</Text>
-          <Text style={styles.modalText}>{message}</Text>
           <View style={styles.buttonContainer}>
             <View style={styles.buttonRow}>
               <TouchableOpacity
@@ -102,10 +99,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 15,
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
   },
   button: {
     borderRadius: 20,
