@@ -40,33 +40,13 @@ const Popup: React.FC<PopupProps> = ({
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
-                onPress={() => decrementXPoints("2", 3)}
-              >
-                <Text style={styles.buttonText}>-3</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
                 onPress={() => decrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>-5</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
-                onPress={() => decrementXPoints("2", 5)}
-              >
-                <Text style={styles.buttonText}>-5</Text>
-              </TouchableOpacity>
-            </View>
-            <View style={styles.buttonRow}>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
-                onPress={() => incrementXPoints("1", 3)}
-              >
-                <Text style={styles.buttonText}>+3</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
-                onPress={() => incrementXPoints("2", 3)}
+                onPress={() => incrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>+3</Text>
               </TouchableOpacity>
@@ -75,6 +55,26 @@ const Popup: React.FC<PopupProps> = ({
                 onPress={() => incrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>+5</Text>
+              </TouchableOpacity>
+            </View>
+            <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("2", 3)}
+              >
+                <Text style={styles.buttonText}>-3</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("2", 5)}
+              >
+                <Text style={styles.buttonText}>-5</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => incrementXPoints("2", 3)}
+              >
+                <Text style={styles.buttonText}>+3</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
@@ -137,12 +137,11 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     width: '100%',
+    flexDirection: 'row',
     gap: 10,
     marginBottom: 10,
   },
   buttonRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
     gap: 8,
   },
 });
