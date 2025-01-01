@@ -32,6 +32,18 @@ const Popup: React.FC<PopupProps> = ({
           <Text style={styles.modalTitle}>{title}</Text>
           <View style={styles.buttonContainer}>
             <View style={styles.buttonRow}>
+            `<TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("1", 3)}
+              >
+                <Text style={styles.buttonText}>-3</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => decrementXPoints("2", 3)}
+              >
+                <Text style={styles.buttonText}>-3</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
                 onPress={() => decrementXPoints("1", 5)}
@@ -46,6 +58,18 @@ const Popup: React.FC<PopupProps> = ({
               </TouchableOpacity>
             </View>
             <View style={styles.buttonRow}>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => incrementXPoints("1", 3)}
+              >
+                <Text style={styles.buttonText}>+3</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                onPress={() => incrementXPoints("2", 3)}
+              >
+                <Text style={styles.buttonText}>+3</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
                 onPress={() => incrementXPoints("1", 5)}
