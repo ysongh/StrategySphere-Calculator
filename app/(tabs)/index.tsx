@@ -133,15 +133,14 @@ export default function HomeScreen() {
           incrementPoints={incrementPoints}
           id={"1"}
         />
-        <TouchableOpacity 
-          style={styles.buttonPopup} 
-          onPress={() => setIsPopupVisible(true)} 
-        >
-          <Text style={styles.buttonPopupText}>More</Text>
-        </TouchableOpacity>
       </View>
 
-      <View style={styles.space} ></View>
+      <TouchableOpacity 
+        style={styles.buttonPopup} 
+        onPress={() => setIsPopupVisible(true)} 
+      >
+        <Text style={styles.buttonPopupText}>More</Text>
+      </TouchableOpacity>
 
       <PointCounter
         points={points2}
@@ -216,7 +215,7 @@ const styles = StyleSheet.create({
     backgroundColor: 'orange',
     padding: 10,
     borderRadius: 5,
-    marginLeft: 30,
+    marginVertical: 10,
     width: 80,
     alignItems: 'center'
   },
