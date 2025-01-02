@@ -32,7 +32,7 @@ const Popup: React.FC<PopupProps> = ({
           <Text style={styles.modalTitle}>{title}</Text>
           <View style={styles.buttonContainer}>
             <View style={styles.buttonRow}>
-            `<TouchableOpacity
+              <TouchableOpacity
                 style={[styles.button, { backgroundColor: closeButtonColor }]}
                 onPress={() => decrementXPoints("1", 3)}
               >
