@@ -1,6 +1,9 @@
 import React from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet, ModalProps } from 'react-native';
 
+const PLAYER1_COLOR = "red";
+const PLAYER2_COLOR = "purple";
+
 interface PopupProps {
   visible: boolean;
   title: string;
@@ -33,25 +36,25 @@ const Popup: React.FC<PopupProps> = ({
           <View style={styles.buttonContainer}>
             <View style={styles.buttonRow}>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
                 onPress={() => decrementXPoints("1", 3)}
               >
                 <Text style={styles.buttonText}>-3</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
                 onPress={() => decrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>-5</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
                 onPress={() => incrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>+3</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
                 onPress={() => incrementXPoints("1", 5)}
               >
                 <Text style={styles.buttonText}>+5</Text>
@@ -59,25 +62,25 @@ const Popup: React.FC<PopupProps> = ({
             </View>
             <View style={styles.buttonRow}>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
                 onPress={() => decrementXPoints("2", 3)}
               >
                 <Text style={styles.buttonText}>-3</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
                 onPress={() => decrementXPoints("2", 5)}
               >
                 <Text style={styles.buttonText}>-5</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
                 onPress={() => incrementXPoints("2", 3)}
               >
                 <Text style={styles.buttonText}>+3</Text>
               </TouchableOpacity>
               <TouchableOpacity
-                style={[styles.button, { backgroundColor: closeButtonColor }]}
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
                 onPress={() => incrementXPoints("2", 5)}
               >
                 <Text style={styles.buttonText}>+5</Text>
