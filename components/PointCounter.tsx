@@ -2,6 +2,7 @@ import { PropsWithChildren } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 
 import { ThemedView } from '@/components/ThemedView';
+import { IconSymbol } from '@/components/ui/IconSymbol';
 
 type pointData = {
   points: number,
@@ -14,7 +15,10 @@ export function PointCounter({ points, decrementPoints, incrementPoints, id }: P
   return (
     <ThemedView>
       <View style={id === "2" ? styles.titleContainer : styles.upsideTitleContainer}>
-        <Text style={styles.titleText}>P{id}</Text>
+        <IconSymbol size={30} name="person.fill" color={"blue"} />
+        <Text style={styles.titleText}>
+          {id}
+        </Text>
         <View style={styles.pointsContainer}>
           <Text style={{
             fontSize: 50,
