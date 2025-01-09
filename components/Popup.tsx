@@ -33,6 +33,10 @@ const Popup: React.FC<PopupProps> = ({
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
           <Text style={styles.modalTitle}>{title}</Text>
+          <View style={styles.labelView}>
+            <Text style={styles.labelText}>P1</Text>
+            <Text style={styles.labelText}>P2</Text>
+          </View>
           <View style={styles.buttonContainer}>
             <View style={styles.buttonRow}>
               <TouchableOpacity
@@ -126,6 +130,16 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     marginBottom: 15,
+  },
+  labelView: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+  },
+  labelText: {
+    fontWeight: 'bold',
+    marginHorizontal: 33,
+    marginBottom: 5,
+    fontSize: 30,
   },
   button: {
     borderRadius: 20,
