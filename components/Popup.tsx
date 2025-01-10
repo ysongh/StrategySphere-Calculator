@@ -6,7 +6,6 @@ const PLAYER2_COLOR = "purple";
 
 interface PopupProps {
   visible: boolean;
-  title: string;
   onClose: () => void;
   animationType?: ModalProps['animationType'];
   closeButtonColor?: string;
@@ -16,7 +15,6 @@ interface PopupProps {
 
 const Popup: React.FC<PopupProps> = ({
   visible,
-  title,
   onClose,
   animationType = 'fade',
   closeButtonColor = '#2196F3',
@@ -32,7 +30,6 @@ const Popup: React.FC<PopupProps> = ({
     >
       <View style={styles.centeredView}>
         <View style={styles.modalView}>
-          <Text style={styles.modalTitle}>{title}</Text>
           <View style={styles.labelView}>
             <Text style={styles.labelText}>P1</Text>
             <Text style={styles.labelText}>P2</Text>
@@ -125,11 +122,6 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
-  },
-  modalTitle: {
-    fontSize: 20,
-    fontWeight: 'bold',
-    marginBottom: 15,
   },
   labelView: {
     flexDirection: 'row',
