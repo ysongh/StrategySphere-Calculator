@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Modal, View, Text, TouchableOpacity, StyleSheet, ModalProps } from 'react-native';
 
 const PLAYER1_COLOR = "red";
@@ -21,6 +21,16 @@ const Popup: React.FC<PopupProps> = ({
   decrementXPoints,
   incrementXPoints
 }) => {
+   const [incrementMode, setIncrementMode] = useState<Boolean>(false);
+
+   const action = async (player: string, amount: number) => {
+    if (incrementMode){
+      incrementXPoints(player, amount);
+    } else {
+      decrementXPoints(player, amount);
+    }
+  };
+
   return (
     <Modal
       animationType={animationType}
@@ -38,56 +48,39 @@ const Popup: React.FC<PopupProps> = ({
             <View style={styles.buttonRow}>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => decrementXPoints("1", 4)}
+                onPress={() => action("1", 4)}
               >
-                <Text style={styles.buttonText}>-4</Text>
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"} 4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => decrementXPoints("1", 5)}
+                onPress={() => action("1", 5)}
               >
-                <Text style={styles.buttonText}>-5</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => incrementXPoints("1", 4)}
-              >
-                <Text style={styles.buttonText}>+4</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => incrementXPoints("1", 5)}
-              >
-                <Text style={styles.buttonText}>+5</Text>
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}5</Text>
               </TouchableOpacity>
             </View>
             <View style={styles.buttonRow}>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => decrementXPoints("2", 4)}
+                onPress={() => action("2", 4)}
               >
-                <Text style={styles.buttonText}>-4</Text>
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => decrementXPoints("2", 5)}
+                onPress={() => action("2", 5)}
               >
-                <Text style={styles.buttonText}>-5</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => incrementXPoints("2", 4)}
-              >
-                <Text style={styles.buttonText}>+4</Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => incrementXPoints("2", 5)}
-              >
-                <Text style={styles.buttonText}>+5</Text>
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}5</Text>
               </TouchableOpacity>
             </View>
           </View>
+
+          <TouchableOpacity
+            style={[styles.button, { backgroundColor: "green", marginBottom: 10 }]}
+            onPress={() => setIncrementMode(!incrementMode)}
+          >
+            <Text style={styles.buttonText}>Set to {!incrementMode ? "Heal" : "Damage"}</Text>
+          </TouchableOpacity>
           
           <TouchableOpacity
             style={[styles.button, { backgroundColor: closeButtonColor }]}
