@@ -38,9 +38,9 @@ const Popup: React.FC<PopupProps> = ({
             <View style={styles.buttonRow}>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => decrementXPoints("1", 3)}
+                onPress={() => decrementXPoints("1", 4)}
               >
-                <Text style={styles.buttonText}>-3</Text>
+                <Text style={styles.buttonText}>-4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
@@ -50,9 +50,9 @@ const Popup: React.FC<PopupProps> = ({
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
-                onPress={() => incrementXPoints("1", 5)}
+                onPress={() => incrementXPoints("1", 4)}
               >
-                <Text style={styles.buttonText}>+3</Text>
+                <Text style={styles.buttonText}>+4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
@@ -64,9 +64,9 @@ const Popup: React.FC<PopupProps> = ({
             <View style={styles.buttonRow}>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => decrementXPoints("2", 3)}
+                onPress={() => decrementXPoints("2", 4)}
               >
-                <Text style={styles.buttonText}>-3</Text>
+                <Text style={styles.buttonText}>-4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
@@ -76,9 +76,9 @@ const Popup: React.FC<PopupProps> = ({
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
-                onPress={() => incrementXPoints("2", 3)}
+                onPress={() => incrementXPoints("2", 4)}
               >
-                <Text style={styles.buttonText}>+3</Text>
+                <Text style={styles.buttonText}>+4</Text>
               </TouchableOpacity>
               <TouchableOpacity
                 style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
