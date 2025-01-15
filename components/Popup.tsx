@@ -58,6 +58,18 @@ const Popup: React.FC<PopupProps> = ({
               >
                 <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}5</Text>
               </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
+                onPress={() => action("1", 6)}
+              >
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}6</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: PLAYER1_COLOR }]}
+                onPress={() => action("1", 7)}
+              >
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}7</Text>
+              </TouchableOpacity>
             </View>
             <View style={styles.buttonRow}>
               <TouchableOpacity
@@ -71,6 +83,18 @@ const Popup: React.FC<PopupProps> = ({
                 onPress={() => action("2", 5)}
               >
                 <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}5</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
+                onPress={() => action("2", 6)}
+              >
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}6</Text>
+              </TouchableOpacity>
+              <TouchableOpacity
+                style={[styles.button, { backgroundColor: PLAYER2_COLOR }]}
+                onPress={() => action("2", 7)}
+              >
+                <Text style={styles.buttonText}>{incrementMode ? "+" : "-"}7</Text>
               </TouchableOpacity>
             </View>
           </View>
