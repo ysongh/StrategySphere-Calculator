@@ -4,6 +4,7 @@ import { Audio } from 'expo-av';
 
 import { PointCounter } from '@/components/PointCounter';
 import Popup from '@/components/Popup';
+import Timer from '@/components/Timer';
 
 export default function HomeScreen() {
   const [points1, setPoints1] = useState(20);
@@ -149,23 +150,23 @@ export default function HomeScreen() {
         id={"2"}
       />
 
-      <View style={styles.space} ></View>
+      <Timer />
 
-      <TouchableOpacity 
-        style={styles.buttonDecrement} 
-        onPress={decrementAllPoints}
-      >
-        <Text style={styles.buttonText}>-1 All</Text>
-      </TouchableOpacity>
+      <View style={{ flexDirection: "row" }}>
+        <TouchableOpacity 
+          style={styles.buttonDecrement} 
+          onPress={decrementAllPoints}
+        >
+          <Text style={styles.buttonText}>-1 All</Text>
+        </TouchableOpacity>
 
-      <View style={styles.space} ></View>
-
-      <TouchableOpacity 
-        style={styles.button} 
-        onPress={resetPoints}
-      >
-        <Text style={styles.buttonText}>Reset</Text>
-      </TouchableOpacity>
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={resetPoints}
+        >
+          <Text style={styles.buttonText}>Reset</Text>
+        </TouchableOpacity>
+      </View>
       
       <Popup
         visible={isPopupVisible}
