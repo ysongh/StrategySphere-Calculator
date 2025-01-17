@@ -170,7 +170,7 @@ export default function HomeScreen() {
           style={styles.button} 
           onPress={resetPoints}
         >
-          <Text style={styles.buttonText}>Reset</Text>
+          <Text style={styles.buttonText}>New Game</Text>
         </TouchableOpacity>
       </View>
       
@@ -200,7 +200,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#007bff',
     padding: 10,
     borderRadius: 5,
-    width: 80,
     alignItems: 'center'
   },
   buttonDecrement: {
