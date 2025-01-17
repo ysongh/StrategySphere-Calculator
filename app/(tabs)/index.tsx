@@ -13,6 +13,7 @@ export default function HomeScreen() {
   const [decrementSound, setDecrementSound] = useState();
   const [newGameSound, setNewGameSound] = useState();
   const [isPopupVisible, setIsPopupVisible] = useState<boolean>(false);
+  const [time, setTime] = useState<number>(0);
 
   useEffect(() => {
     // Load sound effects
@@ -119,6 +120,7 @@ export default function HomeScreen() {
   const resetPoints = async () => {
     setPoints1(20);
     setPoints2(20);
+    setTime(0);
 
     if (newGameSound) {
       await newGameSound.replayAsync();
@@ -127,6 +129,12 @@ export default function HomeScreen() {
 
   return (
     <View style={styles.container}>
+      <View style={{ marginTop: 30 }}></View>
+      <Timer
+        time={time}
+        setTime={setTime}
+      />
+
       <View style={styles.pointContainer}>
         <PointCounter
           points={points1}
@@ -150,9 +158,7 @@ export default function HomeScreen() {
         id={"2"}
       />
 
-      <Timer />
-
-      <View style={{ flexDirection: "row" }}>
+      <View style={{ flexDirection: "row", marginTop: 30 }}>
         <TouchableOpacity 
           style={styles.buttonDecrement} 
           onPress={decrementAllPoints}
@@ -181,7 +187,6 @@ export default function HomeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: '#f5f5f5'

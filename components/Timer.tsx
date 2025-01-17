@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet, ViewStyle, TextStyle } from 'react-native';
 
 interface TimerProps {
-  initialTime?: number;
+  time: number;
+  setTime: Function;
   onTimeUpdate?: (time: number) => void;
-  autoStart?: boolean; // New prop to control auto-start behavior
 }
 
 interface StylesType {
@@ -19,37 +19,27 @@ interface StylesType {
 }
 
 const Timer: React.FC<TimerProps> = ({ 
-  initialTime = 0,
+  time,
+  setTime,
   onTimeUpdate,
-  autoStart = true // Default to true for auto-start
-}) => {
-  const [time, setTime] = useState<number>(initialTime);
-  const [isRunning, setIsRunning] = useState<boolean>(autoStart);
-  
-  // Start timer on mount if autoStart is true
-  useEffect(() => {
-    setIsRunning(autoStart);
-  }, []); // Empty dependency array means this only runs once on mount
-  
+}) => { 
   useEffect(() => {
     let intervalId: NodeJS.Timeout | undefined;
     
-    if (isRunning) {
-      intervalId = setInterval(() => {
-        setTime((prevTime: number) => {
-          const newTime = prevTime + 1;
-          onTimeUpdate?.(newTime);
-          return newTime;
-        });
-      }, 1000);
-    }
+    intervalId = setInterval(() => {
+      setTime((prevTime: number) => {
+        const newTime = prevTime + 1;
+        onTimeUpdate?.(newTime);
+        return newTime;
+      });
+    }, 1000);
     
     return () => {
       if (intervalId) {
         clearInterval(intervalId);
       }
     };
-  }, [isRunning, onTimeUpdate]);
+  }, [onTimeUpdate]);
   
   const formatTime = (timeInSeconds: number): string => {
     const hours: number = Math.floor(timeInSeconds / 3600);
@@ -61,35 +51,9 @@ const Timer: React.FC<TimerProps> = ({
       .padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
   };
   
-  const handleStartStop = (): void => {
-    setIsRunning(!isRunning);
-  };
-  
-  const handleReset = (): void => {
-    setIsRunning(false);
-    setTime(initialTime);
-    onTimeUpdate?.(initialTime);
-  };
-  
   return (
     <View style={styles.container}>
       <Text style={styles.timerText}>{formatTime(time)}</Text>
-      <View style={styles.buttonContainer}>
-        <TouchableOpacity
-          style={[styles.button, isRunning ? styles.stopButton : styles.startButton]}
-          onPress={handleStartStop}
-        >
-          <Text style={styles.buttonText}>
-            {isRunning ? 'Stop' : 'Start'}
-          </Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          style={[styles.button, styles.resetButton]}
-          onPress={handleReset}
-        >
-          <Text style={styles.buttonText}>Reset</Text>
-        </TouchableOpacity>
-      </View>
     </View>
   );
 };
@@ -98,7 +62,6 @@ const styles = StyleSheet.create<StylesType>({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
-    marginVertical: 20,
   },
   timerText: {
     fontSize: 48,
