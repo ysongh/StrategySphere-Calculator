@@ -56,11 +56,22 @@ const styles = StyleSheet.create<StylesType>({
   container: {
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: '#ffffff',
+    borderRadius: 15,
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+    marginBottom: 10,
   },
   timerText: {
     fontSize: 48,
     fontWeight: 'bold',
-    marginBottom: 20,
+    padding: 5,
   },
 });
 
