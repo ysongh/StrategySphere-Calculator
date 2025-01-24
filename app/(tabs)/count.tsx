@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { ThemedText } from '@/components/ThemedText';
 import { ThemedView } from '@/components/ThemedView';
-import { increment } from '../_layout';
+import { increment } from '@/redux/exampleSlice';
 
 export default function CountScreen() {
   const exampleData = useSelector(state => state.example.value);
