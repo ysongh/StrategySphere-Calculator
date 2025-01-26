@@ -34,17 +34,17 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
+        name="gamelogs"
+        options={{
+          title: 'Logs',
+          tabBarIcon: ({ color }) => <IconSymbol size={28} name="list.bullet" color={color} />,
+        }}
+      />
+      <Tabs.Screen
         name="explore"
         options={{
           title: 'Explore',
           tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="count"
-        options={{
-          title: 'Count',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="circle.fill" color={color} />,
         }}
       />
     </Tabs>
