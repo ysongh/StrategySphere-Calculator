@@ -1,12 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, TouchableOpacity, Button, StyleSheet } from 'react-native';
+import { useDispatch } from 'react-redux';
+import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Audio } from 'expo-av';
 
 import { PointCounter } from '@/components/PointCounter';
 import Popup from '@/components/Popup';
 import Timer from '@/components/Timer';
+import { addEvent } from '@/redux/gameSlice';
 
 export default function HomeScreen() {
+  const dispatch = useDispatch();
+
   const [points1, setPoints1] = useState(20);
   const [points2, setPoints2] = useState(20);
   const [incrementSound, setIncrementSound] = useState();
@@ -71,6 +75,8 @@ export default function HomeScreen() {
     if (incrementSound) {
       await incrementSound.replayAsync();
     }
+
+    dispatch(addEvent(`Player ${player} gain 1 point`));
   };
 
   const incrementXPoints = async (player: string, amount: number) => {
@@ -83,6 +89,8 @@ export default function HomeScreen() {
     if (incrementSound) {
       await incrementSound.replayAsync();
     }
+
+    dispatch(addEvent(`Player ${player} gain ${amount} point`));
   };
 
   const decrementPoints = async (player: string) => {
@@ -94,6 +102,8 @@ export default function HomeScreen() {
     if (decrementSound) {
       await decrementSound.replayAsync();
     }
+
+    dispatch(addEvent(`Player ${player} lost 1 point`));
   };
 
   const decrementXPoints = async (player: string, amount: number) => {
@@ -106,6 +116,8 @@ export default function HomeScreen() {
     if (decrementSound) {
       await decrementSound.replayAsync();
     }
+
+    dispatch(addEvent(`Player ${player} lost ${amount} point`));
   };
 
   const decrementAllPoints = async () => {
@@ -115,6 +127,8 @@ export default function HomeScreen() {
     if (decrementSound) {
       await decrementSound.replayAsync();
     }
+
+    dispatch(addEvent("Both players lost 1 point"));
   };
 
   const resetPoints = async () => {
@@ -125,6 +139,7 @@ export default function HomeScreen() {
     if (newGameSound) {
       await newGameSound.replayAsync();
     }
+    dispatch(addEvent("New game"));
   };
 
   return (
