@@ -1,7 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
+interface GameLog {
+  description: string;
+  time: string;
+}
+
 interface GameState {
-  logs: string[];
+  logs: GameLog[];
 }
 
 const initialState: GameState = {

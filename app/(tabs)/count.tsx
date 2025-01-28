@@ -17,7 +17,7 @@ export default function CountScreen() {
   };
 
   const addNewEvent = () => {
-    dispatch(addEvent("Test"));
+    dispatch(addEvent({description: 'Test', time: new Date().toLocaleTimeString()}));
   };
 
   return (
@@ -30,8 +30,8 @@ export default function CountScreen() {
       <ThemedView style={styles.titleContainer}>
         <ThemedText type="title">Events</ThemedText>
       </ThemedView>
-      {gameLogs.map((logs, index) => (
-        <Text key={index} style={styles.countText}>{logs}</Text>
+      {gameLogs.map((log, index) => (
+        <Text key={index} style={styles.countText}>{log.description} {log.time}</Text>
       ))}
       <Button onPress={addNewEvent} title="Add Event" />
     </View>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     gap: 8,
   },
   countText: {
-    fontSize: 30,
+    fontSize: 20,
     fontWeight: 'bold',
     marginTop: 20,
   },
