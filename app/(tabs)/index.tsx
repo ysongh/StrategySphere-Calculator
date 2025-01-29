@@ -76,7 +76,7 @@ export default function HomeScreen() {
       await incrementSound.replayAsync();
     }
 
-    dispatch(addEvent(`Player ${player} gain 1 point`));
+    dispatch(addEvent({description: `Player ${player} gain 1 point`, time: new Date().toLocaleTimeString()}));
   };
 
   const incrementXPoints = async (player: string, amount: number) => {
@@ -90,7 +90,7 @@ export default function HomeScreen() {
       await incrementSound.replayAsync();
     }
 
-    dispatch(addEvent(`Player ${player} gain ${amount} point`));
+    dispatch(addEvent({description: `Player ${player} gain ${amount} point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementPoints = async (player: string) => {
@@ -103,7 +103,7 @@ export default function HomeScreen() {
       await decrementSound.replayAsync();
     }
 
-    dispatch(addEvent(`Player ${player} lost 1 point`));
+    dispatch(addEvent({description: `Player ${player} lost 1 point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementXPoints = async (player: string, amount: number) => {
@@ -117,7 +117,7 @@ export default function HomeScreen() {
       await decrementSound.replayAsync();
     }
 
-    dispatch(addEvent(`Player ${player} lost ${amount} point`));
+    dispatch(addEvent({description: `Player ${player} lost ${amount} point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementAllPoints = async () => {
@@ -128,7 +128,7 @@ export default function HomeScreen() {
       await decrementSound.replayAsync();
     }
 
-    dispatch(addEvent("Both players lost 1 point"));
+    dispatch(addEvent({description: "Both players lost 1 point", time: new Date().toLocaleTimeString()}));
   };
 
   const resetPoints = async () => {
@@ -139,7 +139,8 @@ export default function HomeScreen() {
     if (newGameSound) {
       await newGameSound.replayAsync();
     }
-    dispatch(addEvent("New game"));
+    
+    dispatch(addEvent({description: "New game", time: new Date().toLocaleTimeString()}));
   };
 
   return (

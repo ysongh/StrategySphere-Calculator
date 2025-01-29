@@ -1,33 +1,23 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 // Define the type for a game log entry
 interface GameLog {
   id: string;
   description: string;
-  date: Date;
+  time: string;
 }
 
-const sampleGameLogs: GameLog[] = [
-  { 
-    id: '1', 
-    description: 'Defeated boss in Level 3', 
-    date: new Date('2024-01-15T14:30:00') 
-  },
-  { 
-    id: '2', 
-    description: 'Completed side quest in Forest', 
-    date: new Date('2024-01-16T10:45:00') 
-  }
-];
-
 const GameLogs: React.FC = () => {
+  const gameLogs = useSelector(state => state.game.logs);
+  
   // Render individual log item
   const renderLogItem = ({ item }: { item: GameLog }) => (
     <View style={styles.logItem}>
       <Text style={styles.description}>{item.description}</Text>
       <Text style={styles.date}>
-        {item.date.toLocaleDateString()} {item.date.toLocaleTimeString()}
+        {item.time}
       </Text>
     </View>
   );
@@ -35,7 +25,7 @@ const GameLogs: React.FC = () => {
   return (
     <View style={styles.container}>
       <FlatList
-        data={sampleGameLogs}
+        data={gameLogs}
         renderItem={renderLogItem}
         keyExtractor={(item) => item.id}
         ListHeaderComponent={
