@@ -4,7 +4,7 @@ import { View, Text, FlatList, StyleSheet } from 'react-native';
 
 // Define the type for a game log entry
 interface GameLog {
-  id: string;
+  id?: string;
   description: string;
   time: string;
 }
@@ -27,7 +27,7 @@ const GameLogs: React.FC = () => {
       <FlatList
         data={gameLogs}
         renderItem={renderLogItem}
-        keyExtractor={(item) => item.id}
+        keyExtractor={(item, index) => index.toString()}
         ListHeaderComponent={
           <Text style={styles.header}>Game Logs</Text>
         }
