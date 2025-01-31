@@ -69,55 +69,79 @@ export default function HomeScreen() {
   const incrementPoints = async(player: string) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints + 1);
+      dispatch(addEvent({
+        description: `Player ${player} gain 1 point --> ${points1 + 1}`,
+        time: new Date().toLocaleTimeString()
+      }));
     } else {
       setPoints2(prevPoints => prevPoints + 1);
+      dispatch(addEvent({
+        description: `Player ${player} gain 1 point --> ${points2 + 1}`,
+        time: new Date().toLocaleTimeString()
+      }));
     }
     if (incrementSound) {
       await incrementSound.replayAsync();
     }
-
-    dispatch(addEvent({description: `Player ${player} gain 1 point`, time: new Date().toLocaleTimeString()}));
   };
 
   const incrementXPoints = async (player: string, amount: number) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints + amount);
+      dispatch(addEvent({
+        description: `Player ${player} gain ${amount} point --> ${points1 + amount}`,
+        time: new Date().toLocaleTimeString()
+      }));
     } else {
       setPoints2(prevPoints => prevPoints + amount);
+      dispatch(addEvent({
+        description: `Player ${player} gain ${amount} point --> ${points2 + amount}`,
+        time: new Date().toLocaleTimeString()
+      }));
     }
     setIsPopupVisible(false);
     if (incrementSound) {
       await incrementSound.replayAsync();
     }
-
-    dispatch(addEvent({description: `Player ${player} gain ${amount} point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementPoints = async (player: string) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints - 1);
+      dispatch(addEvent({
+        description: `Player ${player} lost 1 point --> ${points1 - 1}`,
+        time: new Date().toLocaleTimeString()
+      }));
     } else {
       setPoints2(prevPoints => prevPoints - 1);
+      dispatch(addEvent({
+        description: `Player ${player} lost 1 point --> ${points2 - 1}`,
+        time: new Date().toLocaleTimeString()
+      }));
     }
     if (decrementSound) {
       await decrementSound.replayAsync();
     }
-
-    dispatch(addEvent({description: `Player ${player} lost 1 point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementXPoints = async (player: string, amount: number) => {
     if (player === "1"){
       setPoints1(prevPoints => prevPoints - amount);
+      dispatch(addEvent({
+        description: `Player ${player} lost ${amount} point --> ${points1 - amount}`,
+        time: new Date().toLocaleTimeString()
+      }));
     } else {
       setPoints2(prevPoints => prevPoints - amount);
+      dispatch(addEvent({
+        description: `Player ${player} lost ${amount} point --> ${points2 - amount}`,
+        time: new Date().toLocaleTimeString()
+      }));
     }
     setIsPopupVisible(false);
     if (decrementSound) {
       await decrementSound.replayAsync();
     }
-
-    dispatch(addEvent({description: `Player ${player} lost ${amount} point`, time: new Date().toLocaleTimeString()}));
   };
 
   const decrementAllPoints = async () => {
