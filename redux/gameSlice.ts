@@ -18,7 +18,7 @@ const gameSlice = createSlice({
   initialState,
   reducers: {
     addEvent: (state, action: PayloadAction<GameState>) => {
-      state.logs.push(action.payload);
+      state.logs.unshift(action.payload);
     }
   }
 });
